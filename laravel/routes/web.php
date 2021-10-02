@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WsbSite;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +64,14 @@ Route::prefix('admin')->group(function(){
 });
 
 Route::redirect('/admin/{name}', '/admin/home/{name}');
+
+// dwie mozliwosci wywolania
+Route::get('/site/{wsbsite}', [WsbSite::class, 'index']);
+
+Route::get('/drives/{drive}', [PageController::class, 'show']);
+
+Route::get('/userform', function(){
+    return view('userform');
+});
+
+Route::post('UserController', [UserController::class, 'account']);
