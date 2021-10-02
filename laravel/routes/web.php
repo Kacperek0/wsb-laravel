@@ -75,3 +75,7 @@ Route::get('/userform', function(){
 });
 
 Route::post('UserController', [UserController::class, 'account']);
+
+Route::get('/blade', function(){
+    return view('subsite');
+});
