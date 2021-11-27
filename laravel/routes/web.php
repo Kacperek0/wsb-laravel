@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PageController2;
+use App\Http\Controllers\TestbookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\wsb_db;
+use App\Http\Controllers\WsbController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WsbSite;
+use Whoops\Run;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +85,34 @@ Route::post('UserController', [UserController::class, 'account']);
 Route::get('/blade', function(){
     return view('subsite');
 });
+
+Route::get('WsbController', [WsbController::class, 'index']);
+
+Route::get('wsb/{wsbsite}', [WsbController::class, 'index']);
+
+Route::get('pc2/{input}', [PageController2::class, 'show']);
+
+Route::get('/form', function(){
+    return view('form');
+});
+
+Route::post('FormController', [FormController::class, 'account']);
+
+Route::get('db', [wsb_db::class, 'index']);
+
+Route::get('db/users', [wsb_db::class, 'users']);
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/book', [TestbookController::class, 'index']);
